@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';  // new
-
+import UsersList from './components/UsersList';
 
 class App extends Component {
   constructor() {
     super();
-    this.getUsers();
+    this.state = {
+      users: []
+    };
   }
+
+  // new
+  componentDidMount() {
+    this.getUsers();
+  };
 
   // new
   getUsers() {
@@ -15,7 +22,7 @@ class App extends Component {
     console.log("apiurl = " + apiurl);
 
     axios.get(`${process.env.REACT_APP_API_SERVICE_URL}/users`)
-        .then((res) => { console.log(res.data); })  // new
+        .then((res) => { this.setState({ users: res.data }); }) // updated
         .catch((err) => { console.log(err); });
   }
 
@@ -28,12 +35,14 @@ class App extends Component {
                 <br/>
                 <h1 className="title is-1">Users</h1>
                 <hr/><br/>
+                <UsersList users={this.state.users}/>
               </div>
             </div>
           </div>
         </section>
     )
   }
+
 };
 
 ReactDOM.render(
