@@ -1,17 +1,42 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import axios from 'axios';  // new
+
+
+class App extends Component {
+  constructor() {
+    super();
+    this.getUsers();
+  }
+
+  // new
+  getUsers() {
+    let apiurl = process.env.REACT_APP_API_SERVICE_URL;
+    console.log("apiurl = " + apiurl);
+
+    axios.get(`${process.env.REACT_APP_API_SERVICE_URL}/users`)
+        .then((res) => { console.log(res.data); })  // new
+        .catch((err) => { console.log(err); });
+  }
+
+  render() {
+    return (
+        <section className="section">
+          <div className="container">
+            <div className="columns">
+              <div className="column is-one-third">
+                <br/>
+                <h1 className="title is-1">Users</h1>
+                <hr/><br/>
+              </div>
+            </div>
+          </div>
+        </section>
+    )
+  }
+};
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <App />,
+    document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
