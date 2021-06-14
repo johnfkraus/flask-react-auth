@@ -1,4 +1,7 @@
+// services/client/src/components/AddUser.jsx
+
 import React from 'react';
+import PropTypes from 'prop-types';  // new
 
 const AddUser = (props) => {
     return (
@@ -43,6 +46,14 @@ const AddUser = (props) => {
             />
         </form>
     )
+};
+
+// new
+AddUser.propTypes = {
+    username: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    addUser: PropTypes.func.isRequired,
 };
 
 export default AddUser;
