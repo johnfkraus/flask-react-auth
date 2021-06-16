@@ -26,6 +26,11 @@ user = users_namespace.model(
     },
 )
 
+# new
+user_post = users_namespace.inherit(
+    "User post", user, {"password": fields.String(required=True)}
+)
+
 
 class UsersList(Resource):
     @users_namespace.marshal_with(user, as_list=True)
@@ -41,6 +46,7 @@ class UsersList(Resource):
         post_data = request.get_json()
         username = post_data.get("username")
         email = post_data.get("email")
+        password = post_data.get("password")  # new
         response_object = {}
 
         user = get_user_by_email(email)
@@ -48,8 +54,7 @@ class UsersList(Resource):
             response_object["message"] = "Sorry. That email already exists."
             return response_object, 400
 
-        add_user(username, email)
-
+        add_user(username, email, password)  # updated
         response_object["message"] = f"{email} was added!"
         return response_object, 201
 
