@@ -1,8 +1,8 @@
 # Authentication with Flask, React, and Docker
 
+[![pipeline status](https://gitlab.com/johnfkraus/flask-react-auth/badges/master/pipeline.svg)](https://gitlab.com/YOUR_GITLAB_NAMESPACE/flask-react-auth/commits/master)
 
-# Test-Driven Development with Python, Flask, and Docker
+https://testdriven.io/courses/auth-flask-react/continuous-integration/
 
-[![pipeline status](https://gitlab.com/testdriven/flask-tdd-docker/badges/master/pipeline.svg)](https://gitlab.com/testdriven/flask-tdd-docker/commits/master)
-
+formerly Test-Driven Development with Python, Flask, and Docker
 https://testdriven.io/courses/tdd-flask/
