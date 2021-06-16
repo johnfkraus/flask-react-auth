@@ -5,6 +5,7 @@ import os
 
 from flask import Flask
 from flask_admin import Admin
+from flask_bcrypt import Bcrypt  # new
 from flask_cors import CORS  # new
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.middleware.proxy_fix import ProxyFix
@@ -12,6 +13,7 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 # instantiate the extensions
 db = SQLAlchemy()
 cors = CORS()  # new
+bcrypt = Bcrypt()  # new
 admin = Admin(template_mode="bootstrap3")
 
 
